@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+        
+      text-align: center;
+    }
+
+    #result {
+      width: 200px;
+      margin: 10px auto;
+      font-size: 20px;
+      padding: 5px;
+      text-align: right;
+    }
+
+    .calculator-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      margin: 5px;
+    }
+
+    .calculator-btn.operator {
+      background-color: orange;
+    }
+
+    .calculator-btn.special {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <div id="result"></div>
+  <table>
+    <tr>
+      <td><button class="calculator-btn" onclick="handleClick('7')">7</button></td>
+      <td><button class="calculator-btn" onclick="handleClick('8')">8</button></td>
+      <td><button class="calculator-btn" onclick="handleClick('9')">9</button></td>
+      <td><button class="calculator-btn operator" onclick="handleClick('+')">+</button></td>
+    </tr>
+    <tr>
+      <td><button class="calculator-btn" onclick="handleClick('4')">4</button></td>
+      <td><button class="calculator-btn" onclick="handleClick('5')">5</button></td>
+      <td><button class="calculator-btn" onclick="handleClick('6')">6</button></td>
+      <td><button class="calculator-btn operator" onclick="handleClick('-')">-</button></td>
+    </tr>
+    <tr>
+      <td><button class="calculator-btn" onclick="handleClick('1')">1</button></td>
+      <td><button class="calculator-btn" onclick="handleClick('2')">2</button></td>
+      <td><button class="calculator-btn" onclick="handleClick('3')">3</button></td>
+      <td><button class="calculator-btn operator" onclick="handleClick('*')">*</button></td>
+    </tr>
+    <tr>
+      <td><button class="calculator-btn special" onclick="handleClick('.')">.</button></td>
+      <td><button class="calculator-btn" onclick="handleClick('0')">0</button></td>
+      <td><button class="calculator-btn special" onclick="calculateResult()">=</button></td>
+      <td><button class="calculator-btn operator" onclick="handleClick('/')">/</button></td>
+    </tr>
+    <tr>
+      <td><button class="calculator-btn special" onclick="handleClick('C')">C</button></td>
+      <td><button class="calculator-btn special" onclick="handleClick('1/x')">1/x</button></td>
+      <td colspan="2"><button class="calculator-btn operator" onclick="handleClick('%')">%</button></td>
+    </tr>
+  </table>
+
+  <script>
+    
+    var resultElement = document.getElementById('result');
+
+    
+    var currentValue = '';
+    var currentOperator = '';
+
+    
+    function handleClick(value) {
+      if (value === 'C') {
+        clearDisplay();
+      } else if (value === '=') {
+        calculateResult();
+      } else {
+        updateDisplay(value);
+      }
+    }
+
+    
+    function updateDisplay(value) {
+      currentValue += value;
+      resultElement.textContent = currentValue;
+    }
+
+    
+    function clearDisplay() {
+      currentValue = '';
+      resultElement.textContent = '';
+    }
+
+    
+    function calculateResult() {
+      var result;
+      var num1;
+      var num2;
+
+      
+      var operatorIndex = currentValue.indexOf(currentOperator);
+      num1 = parseFloat(currentValue.substring(0, operatorIndex));
+      num2 = parseFloat(currentValue.substring(operatorIndex + 1));
+
+      
+      switch (currentOperator) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          result = num1 / num2;
+          break;
+        case '%':
+          result = num1 % num2;
+          break;
+        case '1/x':
+          result = 1 / num1;
+          break;
+      }
+
+     
+      resultElement.textContent = result.toString();
+      currentValue = result.toString();
+      currentOperator = '';
+    }
+  </script>
+</body>
+</html>
+  

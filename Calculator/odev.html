@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+        
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: left;
+    }
+
+    form {
+      width: 300px;
+    }
+   
+  </style>
+</head>
+<body>
+    
+
+  <br />
+  <form id="registrationForm" onsubmit="validateForm(event)">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    <br />
+    <br />
+
+    <label for="surname">Surname:</label>
+      
+    <input type="text" id="surname" required>
+<br />
+<br />
+    <label for="dob">Date of Birth:</label>
+      
+    <input type="date" id="dob" required>
+<br />
+<br />
+    <label for="email">E-mail:</label>
+      
+    <input type="email" id="email" required>
+<br />
+<br />
+    <label for="password">Password:</label>
+     
+    <input type="password" id="password" required>
+ <br />
+ <br />
+    <label for="gender">Gender:</label>
+       
+    <select id="gender" required>
+   
+      <option value="">Select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <br />
+       <br />
+
+    <label for="interests">Interests:</label>
+    <br />
+    <br />
+    <input type="checkbox" id="swim" name="interests" value="Swim">
+    <label for="Swim">Swim</label>
+    <br />
+    <input type="checkbox" id="code" name="interests" value="Code">
+    <label for="Code">Code</label>
+    <br />
+    <input type="checkbox" id="etc" name="interests" value="etc">
+    <label for="etc">etc</label>
+    
+ <br />
+ <br />
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+
+  <script src="javascript.js"></script>
+</body>
+</html>
